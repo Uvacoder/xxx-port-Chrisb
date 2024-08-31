@@ -25,7 +25,7 @@ jobs:
           # temporarily use preview deploy
           args: deploy --dir=target/site
         env:
-          NETLIFY_SITE_ID: 92571a12-b93f-4e77-bf4e-744c8ccec4e5
+          NETLIFY_SITE_ID: b635e6d9-900c-4c21-993d-11191073ff32
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - uses: dsaltares/fetch-gh-release-asset@master
         with:
