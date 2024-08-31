@@ -33,8 +33,8 @@ jobs:
           # shared-key: ""
       - name: "Install cargo-leptos"
         run: curl --proto '=https' --tlsv1.2 -LsSf https://leptos-rs.artifacts.axodotdev.host/cargo-leptos/v0.2.12/cargo-leptos-installer.sh | sh
-      - run: cargo leptos test
-      - run: cargo leptos build --release
+      - run: cargo leptos test --project www
+      - run: cargo leptos build --release --project www
         env:
           CDN_PATH: https://cdn.christopherbiscardi.com
           CDN_PKG_PATH: https://cdn.christopherbiscardi.com/pkg
