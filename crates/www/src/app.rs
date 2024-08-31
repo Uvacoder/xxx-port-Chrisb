@@ -1,5 +1,5 @@
 use crate::{components::*, routes::index::IndexPage};
-use leptos::{html::Link, prelude::*};
+use leptos::prelude::*;
 use leptos_meta::{
     provide_meta_context, MetaTags, Stylesheet, Title,
 };
