@@ -4,12 +4,12 @@ on:
     branches:
       - "wasm-main"
     paths:
-      - "src/**"
+      - "crates/www/src/**"
       - "Dockerfile"
-      - "style/**"
-      - "tailwind.config.js"
+      - "crates/www/style/**"
+      - "crates/www/tailwind.config.js"
       - "fly.toml"
-      - "public/**"
+      - "crates/www/public/**"
 
 jobs:
   release:
