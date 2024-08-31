@@ -60,7 +60,7 @@ jobs:
         with:
           name: gh-${{ env.date }}-${{ github.sha }}
           fail_on_unmatched_files: true
-          target_commitish: main
+          target_commitish: wasm-main
           tag_name: ${{env.date}}-${{ github.sha }}
           token: ${{ secrets.RELEASE_TOKEN }}
           files: |
