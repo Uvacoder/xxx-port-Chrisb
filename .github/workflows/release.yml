@@ -53,7 +53,7 @@ jobs:
           tar -czvf static-assets.tar.gz target/site
       - name: Publish GitHub Release
         id: gh-release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: gh-${{ env.date }}-${{ github.sha }}
           fail_on_unmatched_files: true
@@ -62,7 +62,7 @@ jobs:
           token: ${{ secrets.RELEASE_TOKEN }}
           files: |
             Cargo.toml
-            target/release/this-week-in-bevy
+            target/release/www
             static-assets.tar.gz
             target/release/hash.txt
             fly.toml
