@@ -47,7 +47,7 @@ pub fn Button(
     view! {
         <button
             type="button"
-            on:click=move |_| on_click(())
+            on:click=move |_| on_click.run(())
             class=classes>
             {children()}
         </button>

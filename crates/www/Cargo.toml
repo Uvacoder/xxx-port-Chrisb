@@ -7,18 +7,22 @@ edition = "2021"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-leptos_meta = { git = "https://github.com/leptos-rs/leptos", branch = "leptos_0.7" }
+leptos-use = { git = "https://github.com/Synphonyte/leptos-use.git", branch = "leptos-0.7", default-features = false, features = [
+    "use_scroll",
+    "use_window",
+    "use_event_listener",
+] }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos" }
 axum = { version = "0.7", optional = true }
 console_error_panic_hook = "0.1"
-leptos = { git = "https://github.com/leptos-rs/leptos", branch = "leptos_0.7", features = [
+leptos = { git = "https://github.com/leptos-rs/leptos", features = [
     "nightly",
     "experimental-islands",
 ] }
-leptos_axum = { git = "https://github.com/leptos-rs/leptos", branch = "leptos_0.7", optional = true }
-leptos_router = { git = "https://github.com/leptos-rs/leptos", branch = "leptos_0.7", features = [
+leptos_axum = { git = "https://github.com/leptos-rs/leptos", optional = true }
+leptos_router = { git = "https://github.com/leptos-rs/leptos", features = [
     "nightly",
 ] }
-leptos-use = { git = "https://github.com/Synphonyte/leptos-use.git", branch = "leptos-0.7" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 tower = { version = "0.4", optional = true }
 tower-http = { version = "0.5", features = ["fs"], optional = true }
@@ -41,6 +45,8 @@ ssr = [
     "leptos_router/ssr",
     "dep:tracing",
 ]
+
+[patch]
 
 
 [package.metadata.leptos]
