@@ -67,5 +67,5 @@ jobs:
             Cargo.toml
             target/release/www
             static-assets.tar.gz
-            target/release/hash.txt
+            crates/www/target/release/hash.txt
             fly.toml
