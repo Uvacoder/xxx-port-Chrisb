@@ -4,6 +4,7 @@ on:
     branches:
       - "wasm-main"
     paths:
+      - "crates/www/Cargo.toml"
       - "crates/www/src/**"
       - "Dockerfile"
       - "crates/www/style/**"
