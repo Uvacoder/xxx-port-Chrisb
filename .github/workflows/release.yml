@@ -1,0 +1,68 @@
+name: Cut Release
+on:
+  push:
+    branches:
+      - "wasm-main"
+    paths:
+      - "src/**"
+      - "Dockerfile"
+      - "style/**"
+      - "tailwind.config.js"
+      - "fly.toml"
+      - "public/**"
+
+jobs:
+  release:
+    name: Test, Release [Docker, GH]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          toolchain: nightly-2024-08-10
+          targets: "wasm32-unknown-unknown"
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: Swatinem/rust-cache@v2
+        with:
+          # The prefix cache key, this can be changed to start a new cache manually.
+          prefix-key: "v0-rust"
+
+          # A cache key that is used instead of the automatic `job`-based key,
+          # and is stable over multiple jobs.
+          # default: empty
+          # shared-key: ""
+      - name: "Install cargo-leptos"
+        run: curl --proto '=https' --tlsv1.2 -LsSf https://leptos-rs.artifacts.axodotdev.host/cargo-leptos/v0.2.12/cargo-leptos-installer.sh | sh
+      - run: cargo leptos test
+      - run: cargo leptos build --release
+        env:
+          CDN_PATH: https://cdn.christopherbiscardi.com
+          CDN_PKG_PATH: https://cdn.christopherbiscardi.com/pkg
+          LEPTOS_HASH_FILES: true
+      - name: Get current date
+        id: date
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Publish Docker Image to Fly.io
+        run: flyctl deploy --build-only --push --image-label $IMAGE_LABEL
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          IMAGE_LABEL: gh-${{ env.date }}-${{ github.sha }}
+      - name: Tar static files
+        run: |
+          tar -czvf static-assets.tar.gz target/site
+      - name: Publish GitHub Release
+        id: gh-release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: gh-${{ env.date }}-${{ github.sha }}
+          fail_on_unmatched_files: true
+          target_commitish: main
+          tag_name: ${{env.date}}-${{ github.sha }}
+          token: ${{ secrets.RELEASE_TOKEN }}
+          files: |
+            Cargo.toml
+            target/release/this-week-in-bevy
+            static-assets.tar.gz
+            target/release/hash.txt
+            fly.toml
