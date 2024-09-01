@@ -1,4 +1,3 @@
-
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
@@ -13,6 +12,7 @@ async fn main() {
     // Generate the list of routes in your Leptos App
     let routes = generate_route_list(App);
 
+    // TODO: remove
     dbg!(std::env::var("CDN_PKG_PATH"));
     dbg!(std::env::var("CDN_PATH"));
 
@@ -21,13 +21,17 @@ async fn main() {
             let leptos_options = leptos_options.clone();
             move || shell(leptos_options.clone())
         })
-        .fallback(leptos_axum::file_and_error_handler(shell))
+        .fallback(leptos_axum::file_and_error_handler(
+            shell,
+        ))
         .with_state(leptos_options);
 
     // run our app with hyper
-    // `axum::Server` is a re-export of `hyper::Server`
+    // `axum::Server` is a re-export of
+    // `hyper::Server`
     log!("listening on http://{}", &addr);
-    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+    let listener =
+        tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
@@ -36,6 +40,7 @@ async fn main() {
 #[cfg(not(feature = "ssr"))]
 pub fn main() {
     // no client-side main function
-    // unless we want this to work with e.g., Trunk for pure client-side testing
+    // unless we want this to work with e.g.,
+    // Trunk for pure client-side testing
     // see lib.rs for hydration function instead
 }
