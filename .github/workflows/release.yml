@@ -43,8 +43,10 @@ jobs:
           CDN_PKG_PATH: https://cdn.christopherbiscardi.com/pkg
           LEPTOS_HASH_FILES: true
       - name: Remove horizontal whitespace from hash.txt
+        shell: bash
         run: tr -d ' ' < crates/www/target/release/hash.txt > crates/www/target/release/hash.txt
       - name: cat hash.txt
+        shell: bash
         run: cat crates/www/target/release/hash.txt
       - name: Get current date
         id: date
