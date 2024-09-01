@@ -47,7 +47,7 @@ jobs:
           version: "0.96.1"
       - name: Remove horizontal whitespace from hash.txt
         shell: nu {0}
-        run: open crates/www/target/release/hash.txt | lines | parse "{key} {value}" | each {|it|  $'($it.key)($in.value)' } | save crates/www/target/release/hash.txt
+        run: open crates/www/target/release/hash.txt | lines | parse "{key} {value}" | each {|it|  $'($it.key)($in.value)' } | save -f crates/www/target/release/hash.txt
       - name: cat hash.txt
         shell: bash
         run: cat crates/www/target/release/hash.txt
