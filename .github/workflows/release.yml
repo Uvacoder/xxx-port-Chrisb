@@ -42,9 +42,12 @@ jobs:
           CDN_PATH: https://cdn.christopherbiscardi.com
           CDN_PKG_PATH: https://cdn.christopherbiscardi.com/pkg
           LEPTOS_HASH_FILES: true
+      - uses: hustcer/setup-nu@v3
+        with:
+          version: "0.96.1"
       - name: Remove horizontal whitespace from hash.txt
-        shell: bash
-        run: tr -d ' ' < crates/www/target/release/hash.txt > crates/www/target/release/hash.txt
+        shell: nu {0}
+        run: open crates/www/target/release/hash.txt | lines | parse "{key} {value}" | each {|it|  $'($it.key)($in.value)' } | save crates/www/target/release/hash.txt
       - name: cat hash.txt
         shell: bash
         run: cat crates/www/target/release/hash.txt
