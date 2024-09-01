@@ -1,8 +1,7 @@
 use crate::{components::*, routes::index::IndexPage};
 use leptos::prelude::*;
 use leptos_meta::{
-    provide_meta_context, HashedStylesheet, MetaTags,
-    Stylesheet, Title,
+    provide_meta_context, HashedStylesheet, MetaTags, Title,
 };
 use leptos_router::{
     components::{Route, Router, Routes},
@@ -10,6 +9,7 @@ use leptos_router::{
 };
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
+    let root = std::env::var("CDN_PATH").unwrap();
     view! {
         <!DOCTYPE html>
         <html lang="en" class="h-full bg-ctp-base">
@@ -22,7 +22,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
                 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
-                <HashedStylesheet options=options />
+                <HashedStylesheet options=options root=root />
             </head>
             <body class="h-full">
                 <App/>
@@ -36,11 +36,11 @@ pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets,
     // titles, meta tags, etc.
     provide_meta_context();
-
+    // <ProgressBar/>
     view! {
         <Title text="Chris Biscardi"/>
 
-        <ProgressBar/>
+
 
         <Router>
             <main class="relative textured-bg">
