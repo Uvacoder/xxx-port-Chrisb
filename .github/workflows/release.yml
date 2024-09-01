@@ -40,7 +40,6 @@ jobs:
       - run: cargo leptos build --release --project www
         env:
           CDN_PATH: https://cdn.christopherbiscardi.com
-          CDN_PKG_PATH: https://cdn.christopherbiscardi.com/pkg
           LEPTOS_HASH_FILES: true
       - uses: hustcer/setup-nu@v3
         with:

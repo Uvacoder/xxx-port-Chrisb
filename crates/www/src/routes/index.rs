@@ -95,7 +95,7 @@ pub fn IndexPage() -> impl IntoView {
                 // 38.0	30.0	92.0	#624DEA
                 border_gradient: Some("conic-gradient( from calc(180deg + var(--angle)) at 50% 70%, #624DEA, #ded9fb)"),
                 center_title: true,
-                image_header: Some("/img/wasm-heading.avif"),
+                image_header: Some("https://wasm-cdn--solicitor-seal-13462.netlify.app/img/wasm-heading.avif"),
                 ..Default::default()
             },
             BentoBoxContent {
@@ -253,7 +253,7 @@ pub fn Hero() -> impl IntoView {
           <img
             style="height: 4rem"
             class="sm:ml-4"
-            src="/img/party-corgi.gif"
+            src="https://wasm-cdn--solicitor-seal-13462.netlify.app/img/party-corgi.gif"
             alt="party corgi rainbow animated"
           />
         </h1>
