@@ -54,6 +54,8 @@ jobs:
       - name: Tar static files
         run: |
           tar -czvf static-assets.tar.gz target/site
+      - name: Remove horizontal whitespace from hash.txt
+        run: tr -d ' ' < crates/www/target/debug/hash.txt > crates/www/target/debug/hash.txt
       - name: Publish GitHub Release
         id: gh-release
         uses: softprops/action-gh-release@v2
