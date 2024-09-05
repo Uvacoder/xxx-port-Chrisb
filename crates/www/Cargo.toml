@@ -7,34 +7,34 @@ edition = "2021"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-# leptos-use = { git = "https://github.com/Synphonyte/leptos-use.git", branch = "leptos-0.7", default-features = false, features = [
-#     "use_scroll",
-#     "use_window",
-#     "use_event_listener",
-# ] }
+leptos-use = { git = "https://github.com/Synphonyte/leptos-use.git", branch = "leptos-0.7", default-features = false, features = [
+    "use_scroll",
+    "use_window",
+    "use_event_listener",
+] }
 # leptos-use = { git = "https://github.com/christopherbiscardi/leptos-use.git", branch = "leptos-beta4", default-features = false, features = [
 #     "use_scroll",
 #     "use_window",
 #     "use_event_listener",
 # ] }
-# leptos_meta = { git = "https://github.com/leptos-rs/leptos" }
-# leptos = { git = "https://github.com/leptos-rs/leptos", features = [
-#     "nightly",
-#     "experimental-islands",
-# ] }
-# leptos_axum = { git = "https://github.com/leptos-rs/leptos", optional = true }
-# leptos_router = { git = "https://github.com/leptos-rs/leptos", features = [
-#     "nightly",
-# ] }
-leptos_meta = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn" }
-leptos = { git = "https://github.com/christopherbiscardi/leptos", features = [
+leptos_meta = { git = "https://github.com/leptos-rs/leptos" }
+leptos = { git = "https://github.com/leptos-rs/leptos", features = [
     "nightly",
     "experimental-islands",
-], branch = "0.7-cdn" }
-leptos_axum = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn", optional = true }
-leptos_router = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn", features = [
+] }
+leptos_axum = { git = "https://github.com/leptos-rs/leptos", optional = true }
+leptos_router = { git = "https://github.com/leptos-rs/leptos", features = [
     "nightly",
 ] }
+# leptos_meta = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn" }
+# leptos = { git = "https://github.com/christopherbiscardi/leptos", features = [
+#     "nightly",
+#     "experimental-islands",
+# ], branch = "0.7-cdn" }
+# leptos_axum = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn", optional = true }
+# leptos_router = { git = "https://github.com/christopherbiscardi/leptos", branch = "0.7-cdn", features = [
+#     "nightly",
+# ] }
 axum = { version = "0.7", optional = true }
 console_error_panic_hook = "0.1"
 

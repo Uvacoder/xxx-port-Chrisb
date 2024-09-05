@@ -12,10 +12,6 @@ async fn main() {
     // Generate the list of routes in your Leptos App
     let routes = generate_route_list(App);
 
-    // TODO: remove this soonish
-    dbg!(std::env::var("CDN_PKG_PATH"));
-    dbg!(std::env::var("CDN_PATH"));
-
     let app = Router::new()
         .leptos_routes(&leptos_options, routes, {
             let leptos_options = leptos_options.clone();
