@@ -42,6 +42,7 @@ const STYLES: &str = "#top-progress {
     opacity: 0.4;
   }";
 
+#[cfg(not(feature = "ssr"))]
 fn get_indicator_percentage_width(
     current_pos: f64,
     total_scroll: f64,
