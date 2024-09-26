@@ -216,9 +216,8 @@
   }
 }
 .bento-box {
-  --bg: var(--ctp-base);
-  --bg-grad: linear-gradient(-45deg, var(--ctp-surface0), var(--ctp-base))
-    padding-box;
+  --bg: #0f172a;
+  --bg-grad: linear-gradient(-45deg, #1e293b, #0f172a) padding-box;
   --border-gradient: var(--gradient) border-box;
   background: var(--bg-grad); /*, var(--border-gradient);*/
   border: calc(var(--border-width, 2) * 1px) solid transparent;
@@ -326,7 +325,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: url(/textures/micro_carbon.png), var(--ctp-base);
+    background: url(/textures/3px-tile.png), #020617;
     background-blend-mode: luminosity;
   }
 }

@@ -1,3 +1,7 @@
+use crate::components::{
+    self,
+    sidebar::{Header, Sidebar},
+};
 use leptos::{either::Either, prelude::*};
 // use sens8::button::*;
 
@@ -143,7 +147,10 @@ pub fn IndexPage() -> impl IntoView {
         .collect::<Vec<(usize, BentoBoxContent)>>(),
     );
     view! {
-        <Hero/>
+        <Sidebar>
+        <Header slot>
+            <Hero/>
+        </Header>
         <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-14">
             <For
                 // a function that returns the items we're iterating over; a signal is fine
@@ -284,6 +291,7 @@ pub fn IndexPage() -> impl IntoView {
             />
 
         </div>
+        </Sidebar>
     }
 }
 

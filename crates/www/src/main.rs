@@ -1,3 +1,6 @@
+// I think this is a macos linker issue
+#![recursion_limit = "512"]
+
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {

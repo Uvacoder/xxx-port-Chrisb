@@ -1,4 +1,7 @@
-use crate::{components::*, routes::index::IndexPage};
+use crate::{
+    components::*,
+    routes::{garden::GardenPage, index::IndexPage},
+};
 use leptos::prelude::*;
 use leptos_meta::{
     provide_meta_context, HashedStylesheet, MetaTags, Title,
@@ -13,8 +16,8 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
         panic!("Must set CDN_PATH env var")
     };
     view! {
-        <!DOCTYPE html> 
-        <html lang="en" class="h-full bg-ctp-base">
+        <!DOCTYPE html>
+        <html lang="en" class="h-full bg-slate-50 dark:bg-slate-950">
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -47,12 +50,11 @@ pub fn App() -> impl IntoView {
         <ProgressBar/>
 
         <Router>
-            <main class="relative textured-bg">
-                <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=IndexPage/>
-                </Routes>
-            </main>
+            <Routes fallback=|| "Page not found.".into_view()>
+                <Route path=StaticSegment("") view=IndexPage/>
+                <Route path=StaticSegment("/garden") view=GardenPage/>
+            </Routes>
         </Router>
-        <Footer/>
+
     }
 }
