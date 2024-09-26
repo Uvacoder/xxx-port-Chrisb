@@ -5,4 +5,3 @@ pub mod sidebar;
 
 pub use footer::Footer;
 pub use progress_bar::ProgressBar;
-pub use sidebar::Sidebar;

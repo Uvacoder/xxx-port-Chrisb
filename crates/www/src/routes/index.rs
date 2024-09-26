@@ -1,5 +1,4 @@
 use crate::components::{
-    self,
     sidebar::{Header, Sidebar},
 };
 use leptos::{either::Either, prelude::*};
