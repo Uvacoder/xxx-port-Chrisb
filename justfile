@@ -1,3 +1,5 @@
+set shell := ["nu", "-c"]
+
 watch:
     cargo leptos watch --project www
 build:
