@@ -6,7 +6,7 @@ lint:
     leptosfmt crates/www/src/**/*.rs
     git add -u
     git commit -m 'leptosfmt'
-    cargo --fix
+    cargo fix
     git add -u
     git commit -m 'cargo --fix'
     cargo clippy --fix
