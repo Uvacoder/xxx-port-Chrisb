@@ -147,149 +147,149 @@ pub fn IndexPage() -> impl IntoView {
     );
     view! {
         <Sidebar>
-        <Header slot>
-            <Hero/>
-        </Header>
-        <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-14">
-            <For
-                // a function that returns the items we're iterating over; a signal is fine
-                each=move || boxes.get()
-                // a unique key for each item
-                key=|boxy| boxy.0.to_string()
-                // renders each item to a view
-                // min-h-24 min-h-32 min-h-36 min-h-16 min-h-64
-                children=move |(index, content)| {
-                    view! {
-                        <div class=format!(
-                            "row-span-1 {}",
-                            if index == 3 || index == 6 { "col-span-2" } else { "" },
-                        )>
+            <Header slot>
+                <Hero/>
+            </Header>
+            <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-14">
+                <For
+                    // a function that returns the items we're iterating over; a signal is fine
+                    each=move || boxes.get()
+                    // a unique key for each item
+                    key=|boxy| boxy.0.to_string()
+                    // renders each item to a view
+                    // min-h-24 min-h-32 min-h-36 min-h-16 min-h-64
+                    children=move |(index, content)| {
+                        view! {
+                            <div class=format!(
+                                "row-span-1 {}",
+                                if index == 3 || index == 6 { "col-span-2" } else { "" },
+                            )>
 
-                            <BentoBox
-                                border_gradient=content.border_gradient.unwrap_or("")
-                                bg=content.bg
-                                speed=content.speed
-                                image_header=content.image_header
-                            >
-                                <p class=format!(
-                                    "text-2xl font-bold leading-7 text-ctp-text sm:truncate sm:text-3xl sm:tracking-tight {}",
-                                    if content.center_title { "text-center" } else { "" },
-                                )>{content.title}</p>
+                                <BentoBox
+                                    border_gradient=content.border_gradient.unwrap_or("")
+                                    bg=content.bg
+                                    speed=content.speed
+                                    image_header=content.image_header
+                                >
+                                    <p class=format!(
+                                        "text-2xl font-bold leading-7 text-ctp-text sm:truncate sm:text-3xl sm:tracking-tight {}",
+                                        if content.center_title { "text-center" } else { "" },
+                                    )>{content.title}</p>
 
-                                {if content.content == "svg-art" {
-                                    view! { <span class="text-ctp-text">wgpu and wgsl</span> }
-                                        .into_any()
-                                } else if content.content == "svg-hex" {
-                                    view! {
-                                        <span>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 800 800"
-                                            >
-                                                <defs>
-                                                    <filter
-                                                        id="b"
-                                                        width="400%"
-                                                        height="400%"
-                                                        x="-100%"
-                                                        y="-100%"
-                                                        color-interpolation-filters="sRGB"
-                                                        filterUnits="objectBoundingBox"
-                                                        primitiveUnits="userSpaceOnUse"
-                                                    >
-                                                        <feGaussianBlur
-                                                            width="100%"
-                                                            height="100%"
-                                                            x="0%"
-                                                            y="0%"
-                                                            in="SourceGraphic"
-                                                            result="blur"
-                                                            stdDeviation="17 8"
-                                                        ></feGaussianBlur>
-                                                    </filter>
-                                                    <filter
-                                                        id="c"
-                                                        width="400%"
-                                                        height="400%"
-                                                        x="-100%"
-                                                        y="-100%"
-                                                        color-interpolation-filters="sRGB"
-                                                        filterUnits="objectBoundingBox"
-                                                        primitiveUnits="userSpaceOnUse"
-                                                    >
-                                                        <feGaussianBlur
-                                                            width="100%"
-                                                            height="100%"
-                                                            x="0%"
-                                                            y="0%"
-                                                            in="SourceGraphic"
-                                                            result="blur"
-                                                            stdDeviation="10 17"
-                                                        ></feGaussianBlur>
-                                                    </filter>
-                                                    <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-                                                        <stop offset="0%" stop-color="hsl(265, 55%, 30%)"></stop>
-                                                        <stop offset="100%" stop-color="hsl(265, 55%, 60%)"></stop>
-                                                    </linearGradient>
-                                                </defs>
-                                                <g fill="none" stroke="url(#a)" stroke-width="16">
-                                                    <path
-                                                        d="M388.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 550 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 250 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
-                                                        filter="url(#b)"
-                                                    ></path>
-                                                    <path
-                                                        d="M400.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 562 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 262 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
-                                                        filter="url(#c)"
-                                                        opacity=".25"
-                                                    ></path>
-                                                    <path
-                                                        d="M376.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 538 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 238 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
-                                                        filter="url(#c)"
-                                                        opacity=".25"
-                                                    ></path>
-                                                    <path d="M388.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 550 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 250 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"></path>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    }
-                                        .into_any()
-                                } else if content.content == "svg-bevy" {
-                                    view! { <span>game development</span> }.into_any()
-                                } else if content.content == "wasm" {
-                                    view! {
-                                        <div class="visible-on-hover text-slate-900">
-                                            <h2 class="outfit-900">
-                                                <a href="/wasm" class="focus:outline-none">
-                                                    <span
-                                                        class="absolute inset-0 z-1"
-                                                        aria-hidden="true"
-                                                    ></span>
-                                                    Wasm
-                                                </a>
-                                            </h2>
-                                            <span class="drop-shadow-2xl">
-                                                Webassembly, Leptos, Rust, and more...
+                                    {if content.content == "svg-art" {
+                                        view! { <span class="text-ctp-text">wgpu and wgsl</span> }
+                                            .into_any()
+                                    } else if content.content == "svg-hex" {
+                                        view! {
+                                            <span>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 800 800"
+                                                >
+                                                    <defs>
+                                                        <filter
+                                                            id="b"
+                                                            width="400%"
+                                                            height="400%"
+                                                            x="-100%"
+                                                            y="-100%"
+                                                            color-interpolation-filters="sRGB"
+                                                            filterUnits="objectBoundingBox"
+                                                            primitiveUnits="userSpaceOnUse"
+                                                        >
+                                                            <feGaussianBlur
+                                                                width="100%"
+                                                                height="100%"
+                                                                x="0%"
+                                                                y="0%"
+                                                                in="SourceGraphic"
+                                                                result="blur"
+                                                                stdDeviation="17 8"
+                                                            ></feGaussianBlur>
+                                                        </filter>
+                                                        <filter
+                                                            id="c"
+                                                            width="400%"
+                                                            height="400%"
+                                                            x="-100%"
+                                                            y="-100%"
+                                                            color-interpolation-filters="sRGB"
+                                                            filterUnits="objectBoundingBox"
+                                                            primitiveUnits="userSpaceOnUse"
+                                                        >
+                                                            <feGaussianBlur
+                                                                width="100%"
+                                                                height="100%"
+                                                                x="0%"
+                                                                y="0%"
+                                                                in="SourceGraphic"
+                                                                result="blur"
+                                                                stdDeviation="10 17"
+                                                            ></feGaussianBlur>
+                                                        </filter>
+                                                        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
+                                                            <stop offset="0%" stop-color="hsl(265, 55%, 30%)"></stop>
+                                                            <stop offset="100%" stop-color="hsl(265, 55%, 60%)"></stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <g fill="none" stroke="url(#a)" stroke-width="16">
+                                                        <path
+                                                            d="M388.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 550 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 250 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
+                                                            filter="url(#b)"
+                                                        ></path>
+                                                        <path
+                                                            d="M400.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 562 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 262 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
+                                                            filter="url(#c)"
+                                                            opacity=".25"
+                                                        ></path>
+                                                        <path
+                                                            d="M376.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 538 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 238 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"
+                                                            filter="url(#c)"
+                                                            opacity=".25"
+                                                        ></path>
+                                                        <path d="M388.453 233.461a23.095 23.095 0 0 1 23.094.001l126.906 73.27A23.093 23.093 0 0 1 550 326.73v146.538c0 8.25-4.402 15.875-11.547 20l-126.906 73.27a23.095 23.095 0 0 1-23.094-.001l-126.906-73.27A23.093 23.093 0 0 1 250 473.27V326.731c0-8.25 4.402-15.875 11.547-20l126.906-73.27Z"></path>
+                                                    </g>
+                                                </svg>
                                             </span>
-                                        </div>
-                                    }
-                                        .into_any()
-                                } else {
-                                    view! {
-                                        <span>
-                                            // <p class="text-ctp-text">{content.content}</p>
-                                            <svg></svg>
-                                        </span>
-                                    }
-                                        .into_any()
-                                }}
+                                        }
+                                            .into_any()
+                                    } else if content.content == "svg-bevy" {
+                                        view! { <span>game development</span> }.into_any()
+                                    } else if content.content == "wasm" {
+                                        view! {
+                                            <div class="visible-on-hover text-slate-900">
+                                                <h2 class="outfit-900">
+                                                    <a href="/wasm" class="focus:outline-none">
+                                                        <span
+                                                            class="absolute inset-0 z-1"
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                        Wasm
+                                                    </a>
+                                                </h2>
+                                                <span class="drop-shadow-2xl">
+                                                    Webassembly, Leptos, Rust, and more...
+                                                </span>
+                                            </div>
+                                        }
+                                            .into_any()
+                                    } else {
+                                        view! {
+                                            <span>
+                                                // <p class="text-ctp-text">{content.content}</p>
+                                                <svg></svg>
+                                            </span>
+                                        }
+                                            .into_any()
+                                    }}
 
-                            </BentoBox>
-                        </div>
+                                </BentoBox>
+                            </div>
+                        }
                     }
-                }
-            />
+                />
 
-        </div>
+            </div>
         </Sidebar>
     }
 }
@@ -326,8 +326,8 @@ pub fn Hero() -> impl IntoView {
                 // color=ButtonColor::TWITTER
                 // icon="twitter">
                 // Twitter
-                <ul class="flex py-4 gap-x-2 mt-4">// </Button>
-                // </li>
+                // </Button>
+                <ul class="flex py-4 gap-x-2 mt-4">// </li>
                 // <li class="">
                 // <Button
                 // href="https://www.youtube.com/channel/UCiSIL42pQRpc-8JNiYDFyzQ"

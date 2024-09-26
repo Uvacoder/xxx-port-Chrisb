@@ -16,7 +16,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
         panic!("Must set CDN_PATH env var")
     };
     view! {
-        <!DOCTYPE html>
+        <!DOCTYPE html> 
         <html lang="en" class="h-full bg-slate-50 dark:bg-slate-950">
             <head>
                 <meta charset="utf-8"/>
@@ -55,6 +55,5 @@ pub fn App() -> impl IntoView {
                 <Route path=StaticSegment("/garden") view=GardenPage/>
             </Routes>
         </Router>
-
     }
 }

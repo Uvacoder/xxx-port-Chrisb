@@ -7,14 +7,12 @@ use leptos::prelude::*;
 #[component]
 pub fn GardenPage() -> impl IntoView {
     view! {
-    <Sidebar>
-        <Header slot>
-            <Hero/>
-        </Header>
-        <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-14">
-            posts
-        </div>
-    </Sidebar>
+        <Sidebar>
+            <Header slot>
+                <Hero/>
+            </Header>
+            <div class="grid grid-cols-3 gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 py-14">posts</div>
+        </Sidebar>
     }
 }
 
@@ -35,9 +33,7 @@ pub fn Hero() -> impl IntoView {
                         alt="party corgi rainbow animated"
                     />
                 </h1>
-                <p class="mt-6 text-xl text-indigo-100 max-w-3xl">
-                    This is all of my posts
-                </p>
+                <p class="mt-6 text-xl text-indigo-100 max-w-3xl">This is all of my posts</p>
             </div>
         </div>
     }
