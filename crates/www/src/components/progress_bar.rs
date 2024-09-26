@@ -92,7 +92,7 @@ pub fn ProgressBar() -> impl IntoView {
             );
 
             let win = use_window();
-            let window = win.as_ref().clone().unwrap();
+            let window = win.as_ref().unwrap();
 
             let inner_height = window
                 .inner_height()
