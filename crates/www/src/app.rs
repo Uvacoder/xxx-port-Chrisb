@@ -13,13 +13,15 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
         panic!("Must set CDN_PATH env var")
     };
     view! {
-        <!DOCTYPE html> 
+        <!DOCTYPE html>
         <html lang="en" class="h-full bg-ctp-base">
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <AutoReload options=options.clone()/>
-                <HydrationScripts options=options.clone() root=root.clone() islands=true/>
+                <HydrationScripts options=options.clone()
+
+                root=root.clone() islands=true/>
                 <MetaTags/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
