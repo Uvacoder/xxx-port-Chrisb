@@ -9,7 +9,9 @@ use leptos_router::{
 };
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
-    let root = std::env::var("CDN_PATH").unwrap();
+    let Ok(root) = std::env::var("CDN_PATH") else {
+        panic!("Must set CDN_PATH env var")
+    };
     view! {
         <!DOCTYPE html>
         <html lang="en" class="h-full bg-ctp-base">
