@@ -318,8 +318,8 @@ pub fn Hero() -> impl IntoView {
                 // <Button href="https://twitter.com/chrisbiscardi"
                 // color=ButtonColor::TWITTER
                 // icon="twitter">
-                <ul class="flex py-4 gap-x-2 mt-4">// Twitter
-                // </Button>
+                // Twitter
+                <ul class="flex py-4 gap-x-2 mt-4">// </Button>
                 // </li>
                 // <li class="">
                 // <Button
