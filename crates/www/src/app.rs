@@ -13,18 +13,21 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
         panic!("Must set CDN_PATH env var")
     };
     view! {
-        <!DOCTYPE html>
+        <!DOCTYPE html> 
         <html lang="en" class="h-full bg-ctp-base">
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <AutoReload options=options.clone() />
+                <AutoReload options=options.clone()/>
                 <HydrationScripts options=options.clone() root=root.clone() islands=true/>
                 <MetaTags/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-                <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
-                <HashedStylesheet options=options root=root />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+                    rel="stylesheet"
+                />
+                <HashedStylesheet options=options root=root/>
             </head>
             <body class="h-full">
                 <App/>
@@ -41,7 +44,7 @@ pub fn App() -> impl IntoView {
     view! {
         <Title text="Chris Biscardi"/>
 
-    <ProgressBar/>
+        <ProgressBar/>
 
         <Router>
             <main class="relative textured-bg">
