@@ -115,17 +115,17 @@ pub fn ProgressBar() -> impl IntoView {
 
     view! {
         <>
-        <style>{STYLES}</style>
-        <progress
-        id="top-progress"
-        class="z-50 fixed top-0 left-0 appearance-none w-full h-1 opacity-100"
-        // value={isNaN(scroll_position_pecentage) ? 100. : scroll_position_pecentage}
-        value=scroll_position_percentage
-        max="100"
-      >
-        70 %
-      </progress>
-      </>
+            <style>{STYLES}</style>
+            <progress
+                id="top-progress"
+                class="z-50 fixed top-0 left-0 appearance-none w-full h-1 opacity-100"
+                // value={isNaN(scroll_position_pecentage) ? 100. : scroll_position_pecentage}
+                value=scroll_position_percentage
+                max="100"
+            >
+                70 %
+            </progress>
+        </>
     }
 }
 
