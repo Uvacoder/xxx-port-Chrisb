@@ -224,7 +224,7 @@ pub fn Sidebar(
                                     class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-slate-800"
                                 >
                                     <img
-                                        class="h-8 w-8 rounded-full bg-slate-800"
+                                        class="h-6 w-6 rounded-full bg-slate-900"
                                         src="/logos/logo-circle.svg"
                                         alt=""
                                     />

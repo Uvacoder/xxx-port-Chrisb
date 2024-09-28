@@ -1,6 +1,4 @@
-use crate::components::{
-    sidebar::{Header, Sidebar},
-};
+use crate::components::sidebar::{Header, Sidebar};
 use leptos::{either::Either, prelude::*};
 // use sens8::button::*;
 
@@ -10,6 +8,7 @@ fn BentoBox<'a>(
     bg: Option<&'a str>,
     image_header: Option<&'a str>,
     #[prop(default = 2.)] speed: f64,
+    #[prop(default = 0.)] animation_offset: f64,
     children: Children,
 ) -> impl IntoView + 'a {
     let mut style = "".to_string();
@@ -27,6 +26,9 @@ fn BentoBox<'a>(
     container_style.push_str("--border-speed: ");
     container_style.push_str(&speed.to_string());
     container_style.push(';');
+    container_style.push_str("--offset: ");
+    container_style.push_str(&animation_offset.to_string());
+    container_style.push_str("s;");
     view! {
         <div style=container_style class="bento-container h-full">
             <div style=style class="bento-box h-full">
@@ -50,6 +52,7 @@ struct BentoBoxContent<'a> {
     bg: Option<&'a str>,
     border_gradient: Option<&'a str>,
     speed: f64,
+    offset: f64,
     center_title: bool,
     image_header: Option<&'a str>,
 }
@@ -61,6 +64,7 @@ impl<'a> Default for BentoBoxContent<'a> {
             bg: Default::default(),
             border_gradient: Default::default(),
             speed: 2.,
+            offset: 0.,
             center_title: false,
             image_header: None,
         }
@@ -88,6 +92,7 @@ pub fn IndexPage() -> impl IntoView {
                 border_gradient: Some("conic-gradient( from calc(180deg + var(--angle)) at 50% 70%, #624DEA, #ded9fb)"),
                 center_title: true,
                 image_header: Some("https://wasm-cdn--solicitor-seal-13462.netlify.app/img/wasm-heading.avif"),
+                offset: 1.,
                 ..Default::default()
             },
             BentoBoxContent {
@@ -170,6 +175,7 @@ pub fn IndexPage() -> impl IntoView {
                                     bg=content.bg
                                     speed=content.speed
                                     image_header=content.image_header
+                                    animation_offset={(0.1 * index as f64)}
                                 >
                                     <p class=format!(
                                         "text-2xl font-bold leading-7 text-ctp-text sm:truncate sm:text-3xl sm:tracking-tight {}",

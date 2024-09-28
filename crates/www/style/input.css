@@ -143,6 +143,8 @@
   --ctp-base: rgb(239, 241, 245);
   --ctp-mantle: rgb(230, 233, 239);
   --ctp-crust: rgb(220, 224, 232);
+
+  --offset: 0s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -215,7 +217,20 @@
     --angle: 360deg;
   }
 }
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 .bento-box {
+  animation: fade-in 0.6s linear var(--offset) both;
   --bg: #0f172a;
   --bg-grad: linear-gradient(-45deg, #1e293b, #0f172a) padding-box;
   --border-gradient: var(--gradient) border-box;
@@ -245,7 +260,7 @@
   position: absolute;
   inset: calc(var(--border-width) * -1px);
   border-radius: calc(var(--border-radius) * 1px);
-  background: var(--ctp-surface0);
+  background: #1e293b;
   opacity: var(--alpha, 0.5);
   transition: opacity 0.2s;
 }
